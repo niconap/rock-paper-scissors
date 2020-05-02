@@ -16,9 +16,6 @@
     const ppr = document.querySelector("#ppr");
     const scr = document.querySelector("#scr");
     const results = document.querySelector("#results");
-    results.textContent = 'Hello';
-
-    alert('Please open the console in the devTools');
     
     rck.addEventListener('click', playRock);
     ppr.addEventListener('click', playPaper);
@@ -46,18 +43,18 @@
         let computer = computerPlay();
         if ((computer == 'paper') && (player == 'rock')) {
             computerScore = ++computerScore;
-            console.log('You Lose, paper beats rock!');
+            results.textContent = 'You Lose, paper beats rock!';
         } else if ((computer == 'rock') && (player == 'scissors')) {
             computerScore = ++computerScore;
-            console.log('You Lose, rock beats scissors!');
+            results.textContent = 'You Lose, rock beats scissors!';
         } else if ((computer == 'scissors') && (player == 'paper')) {
             computerScore = ++computerScore;
-            console.log('You Lose, scissors beats paper!');
+            results.textContent = 'You Lose, scissors beats paper!';
         } else if (computer == player){
-            console.log('It\'s a tie!')
+            results.textContent = 'It\'s a tie!';
         } else {
             playerScore = ++playerScore;
-            console.log('You win!');
+            results.textContent = 'You win this round!';
         }
     }
 
