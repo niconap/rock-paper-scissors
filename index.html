@@ -44,24 +44,29 @@
     }
 
     function playRound(player) {
-        let computer = computerPlay();
-        if ((computer == 'paper') && (player == 'rock')) {
-            computerScore = ++computerScore;
-            results.textContent = 'You Lose, paper beats rock!';
-        } else if ((computer == 'rock') && (player == 'scissors')) {
-            computerScore = ++computerScore;
-            results.textContent = 'You Lose, rock beats scissors!';
-        } else if ((computer == 'scissors') && (player == 'paper')) {
-            computerScore = ++computerScore;
-            results.textContent = 'You Lose, scissors beats paper!';
-        } else if (computer == player){
-            results.textContent = 'It\'s a tie!';
+        if (playerScore < 5 && computerScore < 5) { 
+            let computer = computerPlay();
+            if ((computer == 'paper') && (player == 'rock')) {
+               computerScore = ++computerScore;
+               results.textContent = 'You Lose, paper beats rock!';
+            } else if ((computer == 'rock') && (player == 'scissors')) {
+                computerScore = ++computerScore;
+                results.textContent = 'You Lose, rock beats scissors!';
+            } else if ((computer == 'scissors') && (player == 'paper')) {
+                computerScore = ++computerScore;
+                results.textContent = 'You Lose, scissors beats paper!';
+            } else if (computer == player){
+                results.textContent = 'It\'s a tie!';
+            } else {
+                playerScore = ++playerScore;
+                results.textContent = 'You win this round!';
+            }
+        
+            score.textContent = 'You currently have ' + playerScore + ' point(s). The computer has ' + computerScore + ' point(s)';
+            checkWinner();
         } else {
-            playerScore = ++playerScore;
-            results.textContent = 'You win this round!';
+            return;
         }
-        score.textContent = 'You currently have ' + playerScore + ' point(s). The computer has ' + computerScore + ' point(s)';
-        checkWinner();
     }
 
     function checkWinner() {
