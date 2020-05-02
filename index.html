@@ -9,6 +9,7 @@
   <button id="ppr">Paper</button>
   <button id="scr">Scissors</button>
   <div id="results"></div>
+  <div id="score"></div>
   <script>
     let playerScore = 0;
     let computerScore = 0;
@@ -16,6 +17,7 @@
     const ppr = document.querySelector("#ppr");
     const scr = document.querySelector("#scr");
     const results = document.querySelector("#results");
+    const score = document.querySelector("#score");
     
     rck.addEventListener('click', playRock);
     ppr.addEventListener('click', playPaper);
@@ -56,6 +58,11 @@
             playerScore = ++playerScore;
             results.textContent = 'You win this round!';
         }
+        updateScore();
+    }
+
+    function updateScore() {
+        score.textContent = 'You currently have ' + playerScore + ' point(s). The computer has ' + computerScore + ' point(s)';
     }
 
     function game(){
