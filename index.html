@@ -12,8 +12,11 @@
   <div id="score"></div>
   <div id="winner"></div>
   <script>
+    // Declare global variables to store the scores
     let playerScore = 0;
     let computerScore = 0;
+    
+    // Select UI elements on the page
     const rck = document.querySelector("#rck");
     const ppr = document.querySelector("#ppr");
     const scr = document.querySelector("#scr");
@@ -21,16 +24,19 @@
     const score = document.querySelector("#score");
     const winner = document.querySelector("#winner");
     
+    // Add eventlisteners for the buttons
     rck.addEventListener('click', playRock);
     ppr.addEventListener('click', playPaper);
     scr.addEventListener('click', playScissors);
 
+    // Let the computer pick one of the three options
     function computerPlay() {
         var words = ['rock', 'paper', 'scissors'];
         var word = words[Math.floor(Math.random() * words.length)];
         return word;
     }
 
+    // Make functions for the eventlisteners to execute
     function playRock () {
         playRound('rock');
     }
@@ -42,7 +48,8 @@
     function playScissors () {
         playRound('scissors');
     }
-
+    
+    // Make a function to play a round which outputs the result of that round
     function playRound(player) {
         if (playerScore < 5 && computerScore < 5) { 
             let computer = computerPlay();
@@ -68,7 +75,8 @@
             return;
         }
     }
-
+  
+    // Check who won when one of the players hits 5 points
     function checkWinner() {
         if (computerScore == 5) {
             winner.textContent = 'The computer won the game!';
@@ -76,19 +84,6 @@
             winner.textContent = 'You won the game!';
         } else {
             return;
-        }
-    }
-
-    function game(){
-        let playerSelection = prompt('What is your choice?');
-        let computerSelection = computerPlay();
-        
-        if (playerScore > computerScore) {
-            console.log('You have won the most games!');
-        } else if (computerScore > playerScore) {
-            console.log('The computer has won the most games!');
-        } else {
-            console.log('It\'s a tie!');
         }
     }
   </script>
